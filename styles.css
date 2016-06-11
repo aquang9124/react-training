@@ -1,0 +1,18 @@
+.checker-cell {
+	height: 20px;
+	width: 20px;
+	display: inline-block;
+}
+
+.red {
+	background-color: red;
+}
+
+.black {
+	background-color: black;
+}
+
+.checker-row {
+	height: 20px;
+	width: auto;
+}
