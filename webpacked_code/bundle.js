@@ -61,7 +61,7 @@
 			'div',
 			{ className: 'container' },
 			props.rows.map(function (row) {
-				return _react2.default.createElement(Row, { key: row, cells: props.cells, row: row });
+				return _react2.default.createElement(Row, { key: row, cells: props.cells, row: row, colors: props.colors });
 			})
 		);
 	};
@@ -79,28 +79,29 @@
 			{ className: 'checker-row' },
 			props.cells.map(function (cell) {
 				if (props.row % 2 === 0) {
-					return _react2.default.createElement(Cell, { key: cell, cellClass: cell % 2 === 0 ? 'checker-cell red' : 'checker-cell black' });
+					return _react2.default.createElement(Cell, { key: cell, cellColor: cell % 2 === 0 ? { backgroundColor: props.colors.first } : { backgroundColor: props.colors.second } });
 				}
-
-				return _react2.default.createElement(Cell, { key: cell, cellClass: cell % 2 === 0 ? 'checker-cell black' : 'checker-cell red' });
+				return _react2.default.createElement(Cell, { key: cell, cellColor: cell % 2 === 0 ? { backgroundColor: props.colors.second } : { backgroundColor: props.colors.first } });
 			})
 		);
 	};
 
 	var Cell = function Cell(props) {
-		return _react2.default.createElement('div', { className: props.cellClass });
+		return _react2.default.createElement('div', { className: 'checker-cell', style: props.cellColor });
 	};
 
 	var App = function App() {
 		{
 			var numRows = prompt('How many rows would you like?');
+			var color1 = prompt('Pick one color.');
+			var color2 = prompt('Pick another color.');
 			var rows = [];
 			for (var i = 0; i < numRows; i++) {
 				rows.push(i);
 			}
 			var cells = rows;
 		}
-		return _react2.default.createElement(CheckerBoard, { rows: rows, cells: cells });
+		return _react2.default.createElement(CheckerBoard, { rows: rows, cells: cells, colors: { first: color1, second: color2 } });
 	};
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.querySelector('#app'));
